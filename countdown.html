@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to July 22, 2025</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000, #8B0000);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .countdown-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ff0000;
+            font-size: 2rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff0000;
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 100px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #ff0000;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .message {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            text-shadow: 0 0 10px #ff0000;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-box {
+                min-width: 70px;
+                padding: 10px;
+            }
+            
+            .countdown-value {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="countdown-container">
+        <h1>DUO DINAMIC YOUSSEF + FATY</h1>
+        
+        <div class="countdown">
+            <div class="countdown-box">
+                <div class="countdown-value" id="days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            
+            <div class="countdown-box">
+                <div class="countdown-value" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            
+            <div class="countdown-box">
+                <div class="countdown-value" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            
+            <div class="countdown-box">
+                <div class="countdown-value" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="message" id="message">Time's Up!</div>
+    </div>
+
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Initialize particles.js
+        window.onload = function() {
+            particlesJS("particles-js", {
+                particles: {
+                    number: {
+                        value: 150,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: "#ffffff"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.8,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: false
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "bottom",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "bubble"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        bubble: {
+                            distance: 200,
+                            size: 5,
+                            duration: 2,
+                            opacity: 0.8,
+                            speed: 3
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+
+            // Elapsed time functionality
+            const startDate = new Date("July 22, 2025 00:00:00").getTime();
+            
+            const elapsedTimeFunction = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = now - startDate;
+                
+                // If the start date is in the future, show negative values
+                const isFuture = distance < 0;
+                const absDistance = Math.abs(distance);
+                
+                // Calculate days, hours, minutes and seconds
+                const days = Math.floor(absDistance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((absDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((absDistance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((absDistance % (1000 * 60)) / 1000);
+                
+                // Display the results with negative sign if needed
+                const dayDisplay = (isFuture ? '-' : '') + days.toString().padStart(2, '0');
+                document.getElementById("days").innerHTML = dayDisplay;
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+                
+                // Show message if date has passed
+                if (!isFuture) {
+                    document.getElementById("message").innerHTML = "DUO DINAMIC YOUSSEF + FATY";
+                } else {
+                    document.getElementById("message").innerHTML = "Days until July 22, 2025";
+                }
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
